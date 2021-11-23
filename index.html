@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FCC Technical Documentation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header>Discord Intro</header>
+      <a href="#Introduction" class="nav-link">Introduction</a>
+      <a href="#Bugs" class="nav-link">Bugs</a>
+      <a href="#Bots_and_Apps" class="nav-link">Bots and Apps</a>
+      <a href="#Games" class="nav-link">Games</a>
+      <a href="#API_Reference" class="nav-link">API Reference</a>
+      <a href="#Still_need_some_help?" class="nav-link"
+        >Still need some help?</a
+      >
+      <a href="#Go_Make_Cool_Stuff!" class="nav-link">Go Make Cool Stuff!</a>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <p>
+          You’ve found the Discord Developer Documentation! These pages are
+          dedicated to showing you all the ways that you can use Discord to make
+          cool stuff. Whether you’re looking to create awesome bots for your
+          community, empower your applications with our API, or hook us right
+          into your game with Rich Presence or the GameSDK, Discord has
+          something for you.
+        </p>
+        <p>
+          All of our documentation is on GitHub and and we &lt;3 corrections and
+          improvements!
+        </p>
+      </section>
+      <section class="main-section" id="Bugs">
+        <header>Bugs</header>
+        <p>
+          If you believe you're experiencing a bug with our API or want to
+          report incorrect documentation, open an issue on our issue tracker.
+        </p>
+      </section>
+      <section class="main-section" id="Bots_and_Apps">
+        <header>Bots and Apps</header>
+        <p>
+          Bots and apps are the lifeblood of the Discord development community.
+          They come in all shapes and sizes, from small hobby projects for your
+          server with friends, to huge projects that live in hundreds of
+          thousands of servers. We love seeing the unique, fun, and sometimes
+          downright strange (in a good way) creations that come from our
+          community.
+        </p>
+        <p>
+          Discord offers an open API to serve requests for both bots and OAuth2
+          integrations. So whether you’re making your own /wumpus commands or
+          looking to Log In With Discord, we’ve got you covered.
+        </p>
+        <p>So go do it! Go! Go make an app and create something awesome.</p>
+      </section>
+      <section class="main-section" id="Games">
+        <header>Games</header>
+        <p>
+          We love games, and we love helping game developers. If YOU have a game
+          that you want to supercharge with Discord, then we have just the thing
+          for you.
+        </p>
+        <p>
+          Your Game On Discord <br />
+          If you haven’t yet noticed, Discord allows you to sell your game right
+          from Discord servers! We’ve got a whole suite of tools to help bring
+          your game to life on Discord. Need networking? Have networking! Want a
+          friends list? Take relationships too!
+        </p>
+        <p>
+          Rich Presence <br />
+          No matter where your game lives, it should have a first-class
+          experience in Discord. Rich Presence is the way to make that a
+          reality! We got tired of exchanging usernames, friend codes, and lobby
+          passwords, so we created Rich Presence, an easy-to-use,
+          easy-to-integrate way to get people playing games together that lets
+          you:
+          <ul>
+            <li>
+              Display rich game data on your players’ profiles
+            </li>
+            <li>
+              Empower them to send game invites to each other
+            </li>
+            <li>
+              Ask to Join and Spectate their friends' games
+            </li>
+            <li>
+              Spend more time playing together and less time setting up
+            </li>
+            <li>
+              It’s free, easy, and self-serve, so check out the GameSDK Activity Manager and get started!
+            </li>
+          </ul>
+        </p>
+      </section>
+      <section class="main-section" id="API_Reference">
+        <header>API Reference</header>
+        <p>
+          Discord's API is based around two core layers, a HTTPS/REST API for
+          general operations, and persistent secure WebSocket based connection
+          for sending and subscribing to real-time events. The most common use
+          case of the Discord API will be providing a service, or access to a
+          platform through the OAuth2 API.
+        </p>
+        <p>Error Messages</p>
+        <p>
+          In API v8, we've improved error formatting in form error responses.
+          The response will tell you which json key contains the error, the
+          error code, and a human readable error message. We will be frequently
+          adding new error messages, so a complete list of errors is not
+          feasible and would be almost instantly out of date. Here are some
+          examples instead:
+        </p>
+        <p>Array Error</p>
+        <code>
+          <pre>
+          {
+            "code": 50035,
+            "errors": {
+                "activities": {
+                    "0": {
+                        "platform": {
+                            "_errors": [
+                                {
+                                    "code": "BASE_TYPE_CHOICES",
+                                    "message": "Value must be one of ('desktop', 'android', 'ios')."
+                                }
+                            ]
+                        },
+                        "type": {
+                            "_errors": [
+                                {
+                                    "code": "BASE_TYPE_CHOICES",
+                                    "message": "Value must be one of (0, 1, 2, 3, 4, 5)."
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "message": "Invalid Form Body"
+        }
+        </pre
+          >
+        </code>
+        <p>Object Error</p>
+        <code>
+          <pre>
+          {
+            "code": 50035,
+            "errors": {
+                "access_token": {
+                    "_errors": [
+                        {
+                            "code": "BASE_TYPE_REQUIRED",
+                            "message": "This field is required"
+                        }
+                    ]
+                }
+            },
+            "message": "Invalid Form Body"
+        }
+        </pre
+          >
+        </code>
+        <p>Requst Error</p>
+        <code>
+          <pre>
+          {
+            "code": 50035,
+            "message": "Invalid Form Body",
+            "errors": {
+                "_errors": [
+                    {
+                        "code": "APPLICATION_COMMAND_TOO_LARGE",
+                        "message": "Command exceeds maximum size (4000)"
+                    }
+                ]
+            }
+        }
+        </pre
+          >
+        </code>
+        <p>Authentication</p>
+        <p>Example Bot Token Authorization Header</p>
+        <code>
+          <pre>
+            Authorization: Bot MTk4NjIyNDgzNDcxOTI1MjQ4.Cl2FMQ.ZnCjm1XVW7vRze4b7Cq4se7kKWs
+        </pre
+          >
+        </code>
+        <p>Example Bearer Token Authorization Header</p>
+        <code>
+          <pre>
+            Authorization: Bearer CZhtkLDpNYXgPH9Ml6shqh2OwykChw
+        </pre
+          >
+        </code>
+      </section>
+      <section class="main-section" id="Still_need_some_help?">
+        <header>Still need some help?</header>
+        <p>
+          Join the Official Discord Developers server for support and discussion
+          regarding Discord's APIs.
+        </p>
+      </section>
+      <section class="main-section" id="Go_Make_Cool_Stuff!">
+        <header>Go Make Cool Stuff!</header>
+        <p>
+          We love our developers, and we plan to keep making practical tools so
+          that YOU can keep making cool stuff. Build a bot, integrate our
+          account system, or put us right in your game; whatever you do, do it
+          with Discord. <br /><br />
+
+          We can’t wait to see what you make. <br /><br />
+
+          -- Discord
+        </p>
+      </section>
+    </main>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
